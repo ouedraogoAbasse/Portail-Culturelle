@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact</title>
+        <style>
+        body{
+            font-family: Arial,  sans-serif;
+            margin: 0;
+            padding:0;
+            background:url(./1554481_762787643772031_3524199867917625474_n.jpg) ;
+            background-size: cover;
+        }
+        header{
+            background-color:chocolate;
+            color:#fff;
+            padding: 10px 0;
+            text-align: center;
+
+        }
+        nav{
+            background-color:rgba(68, 68, 68, 0.8);
+            color:#fff;
+            padding: 10px ;
+            text-align: center;
+        }
+        nav a{
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+
+        }
+        .main-content{
+            padding: 20px;
+            background-color: rgba(red, green, blue, alpha);
+            border-radius: 10px;
+        }
+        .section{
+            margin-bottom: 40px;
+            text-transform: bold;
+        }
+        footer{
+            background-color:rgba(68, 68, 68, 0.8);
+            color:#fff;
+            padding: 10px 0 ;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+    
+    <script language="JavaScript">
+        var TestLog = 0; // test pour le login
+        function ChangeLog() {
+            TestLog++; // incrémente le test
+            // si le login a été changé plus d'une fois
+            if (TestLog > 1) { 
+                alert("Vous changez de login?\n Décidez-vous!");
+            }   
+        }
+        function VerifPass () {
+            // si les deux passwords sont différents
+            if (document.form1.pass1.value != document.form1.pass2.value) { 
+                alert("Vous avez entré deux passwords différents !\nVérifiez les deux.");
+            }
+        }
+        function VerifMail () {
+            // confirmation du mail
+            var test = confirm("Votre mail est bien : " + document.form1.mail.value + " ?");
+            if (test == false) { // si l'internaute ne confirme pas
+                alert("N'oubliez pas de changer votre mail!");
+            }
+        }
+        function EnvoyerMessage(event) {
+            event.preventDefault(); // Empêche l'envoi du formulaire pour l'affichage du message
+            var login = document.form1.login.value;
+            var pass1 = document.form1.pass1.value;
+            var pass2 = document.form1.pass2.value;
+            var mail = document.form1.mail.value;
+            var news = document.form1.news.value;
+
+            if (login === "" || pass1 === "" || pass2 === "" || mail === "" || (news !== "yes" && news !== "no")) {
+                alert("Veuillez remplir tous les champs avant d'envoyer le message.");
+            } else {
+                document.getElementById("formMessage").textContent = "Votre message a été envoyé avec succès!";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Portail Culturel Local</h1>
+        <P> Découvrez la richesse culturelle du Plateau-central</P>
+    </header>
+    <nav>
+        <a href="index.html">Acceuil</a>
+        <a href="Accueil.html">Presentation</a>
+        <a href="plat.html">Cuisine</a>
+        <a href="lieu.html"> Monuments</a>
+        <a href="festivals.html">Festival</a>
+        <a href="presentation.html"> Contact</a>
+
+    <form name="form1" onsubmit="EnvoyerMessage(event)">
+        <header><center>Formulaire d'inscription sur notre site</center><br/></header>
+        Login    : <input type="text" name="login" onChange="ChangeLog();" value=""><br/>
+        Password : <input type="password" name="pass1"><br/>
+        Password : <input type="password" name="pass2" onBlur="VerifPass();"><br/>
+        Adresse e-mail :<input type="text" name="mail" onBlur="VerifMail();" value=""><br/>
+        Vous voulez recevoir la newsletter? <input type="radio" name="news" value="yes">Oui <input type="radio" name="news" value="no" onClick="alert('Tant pis pour vous!')">Non<br/>
+        <input type="submit" name="sub" value="Envoi"> <input type="reset" name="reset" value="Effacer"><br/>
+        <div id="formMessage" style="color:blue; margin-top: 10px;"></div>
+    </form></nav>
+    <footer>
+        <p>&copy; 2025 Portail culturel de Zorgho</p>
+    </footer>
+</body>
+</html>
